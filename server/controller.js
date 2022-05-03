@@ -43,8 +43,10 @@ module.exports = {
         });
 
         let valueChange = 10000
-
-        if (type === "plus") {
+       
+        if (houses[index].price <= 10000 && type === "minus") {
+            res.status(400).send("You cannot lower the price any more."); 
+        } else if (type === "plus") {
             houses[index].price += +valueChange;
             res.status(200).send(houses);
         } else if (type === "minus") {
