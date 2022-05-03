@@ -15,6 +15,18 @@ module.exports = {
         res.status(200).send(houses);
     },
     createHouse: (req, res) => {
+        let {address, price, imageURL} = req.body;
+
+        let newHouse = {
+            id: globalId,
+            address,
+            price,
+            imageURL
+        }
+
+        houses.push(newHouse);
+        res.status(200).send(houses);
+        globalId++
         
     },
     updateHouse: (req, res) => {
