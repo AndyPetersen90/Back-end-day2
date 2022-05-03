@@ -30,6 +30,27 @@ module.exports = {
         
     },
     updateHouse: (req, res) => {
+
+        let {id} = req.params;
+        let {type} = req.body;
+
+        // console.log(req.params);
+        // console.log(req.body);
+
+        let index = houses.findIndex((house) => {
+            return house.id === +id;
+
+        });
+
+        let valueChange = 10000
+
+        if (type === "plus") {
+            houses[index].price += +valueChange;
+            res.status(200).send(houses);
+        } else if (type === "minus") {
+            houses[index].price -= +valueChange;
+            res.status(200).send(houses);
+        }
         
     },
 
